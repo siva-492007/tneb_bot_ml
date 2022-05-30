@@ -8,6 +8,10 @@ app = Flask("Team_TNEB")
 loaded_model = joblib.load("model")
 loaded_vect = joblib.load("vectorizer")
 
+@app.route("/")
+def greeting():
+    return jsonify({ "message": "Welcome to TNEB text prediction model" })
+
 @app.route("/user/predict", methods=["POST"])
 def user():
     body = request.get_json()
